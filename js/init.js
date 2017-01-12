@@ -8,7 +8,7 @@ $(function(){
   }
 /*ここまで*/
   if(arg.text !== undefined){
-    $("#aLang").val(numberToAsukaLang(arg.text+""));
+    $("#aLang").val(numberToAsukaLang(arg.text));
   }
   $(".base").hide().fadeIn(1000);
 
