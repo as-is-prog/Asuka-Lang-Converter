@@ -7,7 +7,7 @@ $(function(){
     arg[kv[0]]=kv[1];
   }
 /*ここまで*/
-  if(arg.text === undefined){
+  if(arg.text !== undefined){
     $("#aLang").val(decodeURIComponent(arg.text));
   }
   $(".base").hide().fadeIn(1000);
