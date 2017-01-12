@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>飛鳥言語</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/StringBuffer.js"></script>
+    <script src="js/encoding.js"></script>
+    <script src="js/AsukaLang.js"></script>
+    <script src="js/jquery-2.1.3.js"></script>
+    <script src="js/init.js"></script>
+  </head>
+<body>
+  <div class="base">
+    <h1>AsukaLangConverter</h1>
+    <form name="alf">
+      <textarea id="plain" rows="3" cols="30" name="plain" placeholder="ここに日本語を入れる"></textarea><br>
+      <input type="button" value="飛鳥言語に変換↓" onclick="plainConvertButtonClick()">
+      <input type="button" value="↑平文に変換" onclick="asukaLangConvertButtonClick()"><br>
+      <textarea id="aLang" rows="3" cols="30" name="aLang" placeholder="ここに飛鳥言語が表示される"></textarea><br>
+    </form>
+    <a id ="tweetLink" href="https://twitter.com/intent/tweet?hashtags=AsukaLang&ref_src=twsrc%5Etfw&text=Ninomiya-Asuka-Lang&tw_p=tweetbutton&url=http%3A%2F%2Fasuka-lang.azurewebsites.net%2F%3Ftext%3D">ツイートする……？</a>
+    <article>
+      <div class="paper">
+        <h1>How to Use</h1>
+        <p>
+          上の箱に文字列を入力し、「飛鳥言語に変換」ボタンを押せば、普段の言語から飛鳥言語に。<br>
+          下の箱に文字列を入力し、「平文に変換」ボタンを押せば、飛鳥言語から普段の言語にそれぞれ変換します。<br><br>
+        </p>
+      </div>
+      <div class="paper">
+        <h1>What is this ?</h1>
+        <p>
+          AsukaLangConverterは日常の言語と二宮飛鳥言語間の相互翻訳を提供します。<br>
+          ぜひ、本サービスを用いてこの世界を"二宮飛鳥"で埋め尽くしてください。<br>
+          <font color="#cecece">※もちろん冗談です。適度な利用を推奨します。</font>
+        </p>
+      </div>
+      <div class="paper">
+        <h1>What is Ninomiya-Asuka-Language ?</h1>
+        <p>
+          この世界を"二","宮","飛","鳥"の四文字で構成するために作られた言語、それが二宮飛鳥言語です。<br>
+        </p>
+      </div>
+      <div class="paper">
+        <h1>ご要望その他</h1>
+        <p>
+          Twitter: <a href="https://twitter.com/as_is_prog">@as_is_prog</a>
+        </p>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
