@@ -8,15 +8,16 @@ $(function(){
   }
 /*ここまで*/
   if(arg.text !== undefined){
-    $("#aLang").val(decodeURIComponent(arg.text));
+    $("#aLang").val(numberToAsukaLang(decodeURIComponent(arg.text)));
   }
   $(".base").hide().fadeIn(1000);
 
   $("#aLang").on("change",function(){
 //    console.log($("#aLang").val());
     var text = encodeURIComponent($("#aLang").val());
+    var number = encodeURIComponent(asukaLangToNumber($("#aLang").val()));
 //    console.log(text);
-    var linkText = "https://twitter.com/intent/tweet?hashtags=AsukaLang&ref_src=twsrc%5Etfw&text="+text+"&tw_p=tweetbutton&url=http%3A%2F%2Fasuka-lang.azurewebsites.net%2F%3Ftext%3D"+text;
+    var linkText = "https://twitter.com/intent/tweet?hashtags=AsukaLang&ref_src=twsrc%5Etfw&text="+text+"&tw_p=tweetbutton&url=http%3A%2F%2Fasuka-lang.azurewebsites.net%2F%3Ftext%3D"+number;
 //    console.log(linkText);
     $("#tweetLink").attr("href",linkText);
   });

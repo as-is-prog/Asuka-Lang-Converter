@@ -104,3 +104,21 @@ function plainClearButtonClick(){
 function asukaLangClearButtonClick(){
   document.alf.aLang.value = "";
 }
+
+function asukaLangToNumber(aLang){
+  var tmp = aLang;
+  tmp = tmp.replace(/飛/g,"0");
+  tmp = tmp.replace(/宮/g,"1");
+  tmp = tmp.replace(/二/g,"2");
+  tmp = tmp.replace(/鳥/g,"3");
+  return tmp;
+}
+
+function numberToAsukaLang(number){
+  var tmp = aLang;
+  tmp = tmp.replace(/0/g,"飛");
+  tmp = tmp.replace(/1/g,"宮");
+  tmp = tmp.replace(/2/g,"二");
+  tmp = tmp.replace(/3/g,"鳥");
+  return tmp;
+}
