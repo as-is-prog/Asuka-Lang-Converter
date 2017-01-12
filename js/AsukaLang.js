@@ -115,7 +115,7 @@ function asukaLangToNumber(aLang){
 }
 
 function numberToAsukaLang(number){
-  var tmp = aLang;
+  var tmp = number;
   tmp = tmp.replace(/0/g,"飛");
   tmp = tmp.replace(/1/g,"宮");
   tmp = tmp.replace(/2/g,"二");
