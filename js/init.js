@@ -7,9 +7,9 @@ $(function(){
     arg[kv[0]]=kv[1];
   }
 /*ここまで*/
-
-  $("#aLang").val(decodeURIComponent(arg.text));
-
+  if(arg.text === undefined){
+    $("#aLang").val(decodeURIComponent(arg.text));
+  }
   $(".base").hide().fadeIn(1000);
 
   $("#aLang").on("change",function(){
