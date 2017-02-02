@@ -58,7 +58,9 @@ function byteToAsukaLang(byteNum){
   return retBf.toString();
 }
 
-function asukaLangToString(asukaStr){
+function asukaLangToString(asukaText){
+  var asukaStr = asukaText.replace(/[^二宮飛鳥]/g, "");
+
   var byteList = new Array();
 
   for (var i = 0; i < asukaStr.length; i += 4){
