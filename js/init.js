@@ -16,7 +16,7 @@ $(function(){
     var tmp = 1;
     aCharCounts = 1;
     while(tmp < 256){
-      tmp *= asukaLang.length
+      tmp *= asukaLang.length;
       aCharCounts += 1;
       console.log(tmp);
     }
@@ -31,7 +31,7 @@ $(function(){
 //    console.log($("#aLang").val());
     var text = encodeURIComponent($("#aLang").val());
     var number = numFlag ? encodeURIComponent(asukaLangToNumber($("#aLang").val())) : "";
-    var linkText = "https://twitter.com/intent/tweet?"+(key === undefined ? "hashtags=AsukaLang&":"")+"ref_src=twsrc%5Etfw&text="+text+"&tw_p=tweetbutton&url=http%3A%2F%2Fasuka-lang.azurewebsites.net%2F%3Flink%3Dask"+(key !== undefined ? "%26key%3D"+ key : "")+(number != "" ? "%26text%3D"+number : "");
+    var linkText = "https://twitter.com/intent/tweet?"+(key === undefined ? "hashtags=AsukaLang&":"")+"ref_src=twsrc%5Etfw&text="+text+"&tw_p=tweetbutton&url=http%3A%2F%2Fasuka-lang.azurewebsites.net%2F%3Flink%3Dask"+(key !== undefined ? "%26key%3D"+ encodeURIComponent(key) : "")+(number != "" ? "%26text%3D"+number : "");
     console.log(linkText);
     $("#tweetLink").attr("href",linkText);
   });
