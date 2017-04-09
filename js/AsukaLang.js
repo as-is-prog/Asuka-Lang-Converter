@@ -1,4 +1,5 @@
-var asukaLang = [ "飛", "宮", "二", "鳥" ];
+var asukaLang = "飛宮二鳥".split("");
+var aCharCounts = 4;
 
 /*引用元
 JavaScriptコードスニペット：文字列_=_UTF-8バイト配列の変換 [松林堂_shorindo.com]
@@ -44,11 +45,11 @@ function byteArrayToAsukaLang(byteArray){
 function byteToAsukaLang(byteNum){
   var retBf = new StringBuffer("");
   var num = byteNum;
-  var quatNums = [0,0,0,0];
+  var quatNums = new Array(aCharCounts);
 
-  for(var i = 0; i < 4; i++){
-    quatNums[i] = Math.floor(num / Math.floor(Math.pow(4, 3 - i)));
-    num = num % Math.floor(Math.pow(4, 3 - i));
+  for(var i = 0; i < aCharCounts; i++){
+    quatNums[i] = Math.floor(num / Math.floor(Math.pow(asukaLang.length, aCharCounts - 1 - i)));
+    num = num % Math.floor(Math.pow(asukaLang.length, aCharCounts - 1 - i));
   }
 
   for(var i = 0; i < quatNums.length; i++){
@@ -59,29 +60,26 @@ function byteToAsukaLang(byteNum){
 }
 
 function asukaLangToString(asukaText){
-  var asukaStr = asukaText.replace(/[^二宮飛鳥]/g, "");
+  var reg = new RegExp("[^"+(asukaLang.join(""))+"]","g");
+  var asukaStr = asukaText.replace(reg, "");
 
   var byteList = new Array();
 
-  for (var i = 0; i < asukaStr.length; i += 4){
-      var aCharBytes = [0,0,0,0];
-      for (var j = i; j < i + 4; j++){
-          switch (asukaStr.charAt(j)){
-              case '二':
-                  aCharBytes[j - i] = 2;
-                  break;
-              case '宮':
-                  aCharBytes[j - i] = 1;
-                  break;
-              case '飛':
-                  aCharBytes[j - i] = 0;
-                  break;
-              case '鳥':
-                  aCharBytes[j - i] = 3;
-                  break;
+  for (var i = 0; i < asukaStr.length; i += aCharCounts){
+      var aCharBytes = new Array(aCharCounts);
+      for (var j = i; j < i + aCharCounts; j++){
+          for(var k = 0; k < asukaLang.length; k++){
+            if(asukaLang[k] == asukaStr.charAt(j)){
+              aCharBytes[j - i] = k;
+              break;
+            }
           }
       }
-      byteList.push((aCharBytes[0] * 64) + (aCharBytes[1] * 16) + (aCharBytes[2] * 4) + aCharBytes[3]);
+      var pushCode = 0;
+      for(var l = (aCharCounts - 1);l >= 0;l--){
+        pushCode += aCharBytes[aCharCounts - 1 - l] * Math.pow(asukaLang.length,l);
+      }
+      byteList.push(pushCode);
   }
   var utf8ByteList = Encoding.convert(byteList,{
     to: "UNICODE",
@@ -109,18 +107,17 @@ function asukaLangClearButtonClick(){
 
 function asukaLangToNumber(aLang){
   var tmp = aLang;
-  tmp = tmp.replace(/飛/g,"0");
-  tmp = tmp.replace(/宮/g,"1");
-  tmp = tmp.replace(/二/g,"2");
-  tmp = tmp.replace(/鳥/g,"3");
+  for(var i = 0; i < asukaLang.length;i++){
+    reg = new RegExp(asukaLang[i],"g");
+    tmp = tmp.replace(reg,""+i);
+  }
   return tmp;
 }
 
 function numberToAsukaLang(number){
   var tmp = number;
-  tmp = tmp.replace(/0/g,"飛");
-  tmp = tmp.replace(/1/g,"宮");
-  tmp = tmp.replace(/2/g,"二");
-  tmp = tmp.replace(/3/g,"鳥");
+  for(var i = 0; i < asukaLang.length;i++){
+    tmp = tmp.replace(new RegExp(""+i,"g"),asukaLang[i]);
+  }
   return tmp;
 }
