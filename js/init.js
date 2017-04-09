@@ -10,7 +10,7 @@ $(function(){
     arg[kv[0]]=kv[1];
   }
 /*ここまで*/
-  if(arg.key !== undefined){
+  if(arg.key !== undefined && decodeURI(arg.key).length >= 2){
     key = arg.key;
     asukaLang = decodeURI(arg.key).split("");
     var tmp = 1;
