@@ -88,23 +88,6 @@ function asukaLangToString(asukaText){
   return Encoding.codeToString(utf8ByteList);
 }
 
-function plainConvertButtonClick(){
-  document.alf.aLang.value = byteArrayToAsukaLang(textToSjisArray(document.alf.plain.value));
-  $("#aLang").change();
-}
-
-function asukaLangConvertButtonClick(){
-  document.alf.plain.value = asukaLangToString(document.alf.aLang.value);
-}
-
-function plainClearButtonClick(){
-  document.alf.plain.value = "";
-}
-
-function asukaLangClearButtonClick(){
-  document.alf.aLang.value = "";
-}
-
 function asukaLangToNumber(aLang){
   var tmp = aLang;
   for(var i = 0; i < asukaLang.length;i++){

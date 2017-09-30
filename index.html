@@ -7,48 +7,112 @@
     <script src="js/StringBuffer.js"></script>
     <script src="js/encoding.js"></script>
     <script src="js/AsukaLang.js"></script>
-    <script src="js/jquery-2.1.3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <script src="js/init.js"></script>
   </head>
 <body>
-  <div class="base">
-    <h1>AsukaLangConverter</h1>
-    <form name="alf">
-      <textarea id="plain" rows="3" cols="30" name="plain" placeholder="ここに日本語を入れる"></textarea><br>
-      <input type="button" value="飛鳥言語に変換↓" onclick="plainConvertButtonClick()">
-      <input type="button" value="↑平文に変換" onclick="asukaLangConvertButtonClick()"><br>
-      <textarea id="aLang" rows="3" cols="30" name="aLang" placeholder="ここに飛鳥言語が表示される"></textarea><br>
-    </form>
-    <a id ="tweetLink" href="https://twitter.com/intent/tweet?hashtags=AsukaLang&ref_src=twsrc%5Etfw&text=Ninomiya-Asuka-Lang&tw_p=tweetbutton&url=http%3A%2F%2Fasuka-lang.azurewebsites.net%2F%3Ftext%3D">ツイートする……？</a>
-    <article>
-      <div class="paper">
-        <h1>How to Use</h1>
-        <p>
-          上の箱に文字列を入力し、「飛鳥言語に変換」ボタンを押せば、普段の言語から飛鳥言語に。<br>
-          下の箱に文字列を入力し、「平文に変換」ボタンを押せば、飛鳥言語から普段の言語にそれぞれ変換します。<br><br>
-        </p>
+  <nav class="deep-purple lighten-2">
+    <a href="#" class="brand-logo right">Asuka-Lang-Converter</a>
+  </nav>
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-content">
+            <h4 class="deep-purple-text text-lighten-1">Convert</h3>
+            <div class="input-field col s12">
+              <textarea id="tbox" class="materialize-textarea"></textarea>
+              <label for="tbox">変換したい文字列を入力してください</label>
+            </div>
+          </div>
+          <div class="card-tabs">
+            <ul class="tabs tabs-fixed-width">
+              <li class="indicator blue lighten-4"></li>
+              <li class="tab"><a href="#t_toalang">飛鳥言語に変換</a></li>
+              <li class="tab"><a href="#t_toplain">平文に変換</a></li>
+              <li class="tab"><a class="active" href="#t_tweet">つぶやく</a></li>
+            </ul>
+            <div class="card-content">
+              <div id="t_toalang" >二飛飛二二二飛飛二飛飛二二鳥宮鳥二飛飛二二二二宮二飛飛二鳥二鳥宮</div>
+              <div id="t_toplain">あすかわ</div>
+              <div id="t_tweet"><a id ="tweetLink" href="https://twitter.com/intent/tweet?hashtags=AsukaLang&ref_src=twsrc%5Etfw&text=Ninomiya-Asuka-Lang&tw_p=tweetbutton&url=http%3A%2F%2Fasuka-lang.azurewebsites.net%2F%3Ftext%3D">ツイートする……？</a></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="paper">
-        <h1>What is this ?</h1>
-        <p>
-          AsukaLangConverterは日常の言語と二宮飛鳥言語間の相互翻訳を提供します。<br>
-          ぜひ、本サービスを用いてこの世界を"二宮飛鳥"で埋め尽くしてください。<br>
-          <font color="#cecece">※もちろん冗談です。適度な利用を推奨します。</font>
-        </p>
+    </div>
+
+    <div class="col s12 m6">
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-content">
+            <h4 class="deep-purple-text text-lighten-2">How to Use</h4>
+            <p>
+              テキストボックスに文字列を入力し、「飛鳥言語に変換」タブを選べば、普段の言語から飛鳥言語に。「平文に変換」タブを選べば、飛鳥言語から普段の言語にそれぞれ変換します。
+            </p>
+          </div>
+          <div class="card-action deep-purple lighten-4">
+            <span>　</span>
+          </div>
+        </div>
       </div>
-      <div class="paper">
-        <h1>What is Ninomiya-Asuka-Language ?</h1>
-        <p>
-          この世界を"二","宮","飛","鳥"の四文字で構成するために作られた言語、それが二宮飛鳥言語です。<br>
-        </p>
+    </div>
+
+    <div class="col s12 m6">
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-content">
+            <h4 class="deep-purple-text text-lighten-2">What is this ?</h4>
+            <p>
+              AsukaLangConverterは日常の言語と二宮飛鳥言語間の相互翻訳を提供します。
+              ぜひ、本サービスを用いてこの世界を"二宮飛鳥"で埋め尽くしてください。
+              <font color="#cecece">※もちろん冗談です。適度な利用を推奨します。</font>
+            </p>
+          </div>
+          <div class="card-action deep-purple lighten-4">
+            <span>　</span>
+          </div>
+        </div>
       </div>
-      <div class="paper">
-        <h1>ご要望その他</h1>
-        <p>
-          Twitter: <a href="https://twitter.com/as_is_prog">@as_is_prog</a>
-        </p>
+    </div>
+
+    <div class="col s12 m6">
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-content">
+            <h4 class="deep-purple-text text-lighten-2">What is Ninomiya-Asuka-Language ?</h4>
+            <p>
+              この世界を"二","宮","飛","鳥"の四文字で構成するために作られた言語、それが二宮飛鳥言語です。
+            </p>
+          </div>
+          <div class="card-action deep-purple lighten-4">
+            <span>　</span>
+          </div>
+        </div>
       </div>
-    </article>
+    </div>
+
+    <div class="col s12 m6">
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-content">
+            <h4 class="deep-purple-text text-lighten-2">ご要望その他</h4>
+            <p>
+              Twitter: <a href="https://twitter.com/as_is_prog">@as_is_prog</a>
+            </p>
+          </div>
+          <div class="card-action deep-purple lighten-4">
+            <span>　</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </body>
 </html>

@@ -22,19 +22,32 @@ $(function(){
     }
   }
   if(arg.text !== undefined){
-    $("#aLang").val(numberToAsukaLang(arg.text));
+    $("#plain").val(numberToAsukaLang(arg.text));
   }
 
-  $(".base").hide().fadeIn(1000);
+  $("#tbox").on("change",function(){
+    $("#t_toalang").text(byteArrayToAsukaLang(textToSjisArray($("#tbox").val())));
+    $("#t_toplain").text(asukaLangToString($("#tbox").val()));
 
-  $("#aLang").on("change",function(){
-//    console.log($("#aLang").val());
-    var text = encodeURIComponent($("#aLang").val());
-    var number = numFlag ? encodeURIComponent(asukaLangToNumber($("#aLang").val())) : "";
-    var linkText = "https://twitter.com/intent/tweet?"+(key === undefined ? "hashtags=AsukaLang&":"")+"ref_src=twsrc%5Etfw&text="+text+"&tw_p=tweetbutton&url=http%3A%2F%2Fasuka-lang.azurewebsites.net%2F%3Flink%3Dask"+(key !== undefined ? "%26key%3D"+ encodeURIComponent(key) : "")+(number != "" ? "%26text%3D"+number : "");
-    console.log(linkText);
-    $("#tweetLink").attr("href",linkText);
+//    if($("#t_toplain").text() == ""){
+      var text = encodeURIComponent($("#t_toalang").text());
+      var number = numFlag ? encodeURIComponent(asukaLangToNumber($("#t_toalang").text())) : "";
+      var linkText = "https://twitter.com/intent/tweet?"+(key === undefined ? "hashtags=AsukaLang&":"")+"ref_src=twsrc%5Etfw&text="+text+"&tw_p=tweetbutton&url=http%3A%2F%2Fasuka-lang.azurewebsites.net%2F%3Flink%3Dask"+(key !== undefined ? "%26key%3D"+ encodeURIComponent(key) : "")+(number != "" ? "%26text%3D"+number : "");
+      console.log(linkText);
+      $("#tweetLink").attr("href",linkText);
+//    }
   });
+
+  $("#t_toalang,#t_toplain").on("click",function(){
+
+    $("body").append($("<input id='tmp' type='text' value='"+$(this).text()+"'>"));
+    $("#tmp").select();
+    document.execCommand("copy");
+    alert($("#tmp").val());
+    $("#tmp").remove();
+  })
+
+  $(".tab>a").addClass("deep-purple-text text-lighten-1 ");
 
 });
 
