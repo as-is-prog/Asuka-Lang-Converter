@@ -32,7 +32,7 @@ $(function(){
 //    if($("#t_toplain").text() == ""){
       var text = encodeURIComponent($("#t_toalang").text());
       var number = numFlag ? encodeURIComponent(asukaLangToNumber($("#t_toalang").text())) : "";
-      var linkText = "https://twitter.com/intent/tweet?"+(key === undefined ? "hashtags=AsukaLang&":"")+"ref_src=twsrc%5Etfw&text="+text+"&tw_p=tweetbutton&url=http%3A%2F%2Fasuka-lang.azurewebsites.net%2F%3Flink%3Dask"+(key !== undefined ? "%26key%3D"+ encodeURIComponent(key) : "")+(number != "" ? "%26text%3D"+number : "");
+      var linkText = "https://twitter.com/intent/tweet?"+(key === undefined ? "hashtags=AsukaLang&":"")+"ref_src=twsrc%5Etfw&text="+text+"&tw_p=tweetbutton&url=https%3A%2F%2Fas-is-prog.github.io%2Fasuka-lang%2Findex.html%3Flink%3Dask"+(key !== undefined ? "%26key%3D"+ encodeURIComponent(key) : "")+(number != "" ? "%26text%3D"+number : "");
       console.log(linkText);
       $("#tweetLink").attr("href",linkText);
 //    }
